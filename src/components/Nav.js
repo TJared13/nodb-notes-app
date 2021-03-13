@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 export default class Nav extends Component {
     render(){
+        const {newNote} = this.props;
         return (
             <section className='navbar'>
                 <div className='searchfield' >
@@ -9,7 +10,7 @@ export default class Nav extends Component {
                     <button className ='navbtn'>Search</button>
                     <button className ='navbtn'>Clear</button>
                 </div>
-                <button className='newbtn'>+</button>
+                <button className='newbtn' onClick={newNote}>+</button>
             </section>
         )
     }

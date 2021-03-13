@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 export default class Note extends Component {
     render(){
+        const {deleteNote} = this.props;
         return (
             <section className='notesAlign'>
                 <div className='noteMain'>
@@ -11,7 +12,7 @@ export default class Note extends Component {
 
                     <div className='noteBtn'>
                         <button className='navBtn'>Edit</button>
-                        <button className='naveBtn'>Delete</button>
+                        <button className='naveBtn' onClick={deleteNote}>Delete</button>
                     </div>
                     <textarea className='noteInput' type='text'/>
 
@@ -20,3 +21,7 @@ export default class Note extends Component {
         )
     }
 }
+
+
+
+
