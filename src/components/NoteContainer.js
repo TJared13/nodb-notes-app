@@ -8,25 +8,19 @@ export default class NoteContainer extends Component {
         super();
         this.state = {
             notes: [],
-            text: '',
         };
 
-        this.handleChange = this.handleChange.bind(this);
         this.newNote = this.newNote.bind(this);
         this.deleteNote = this.deleteNote.bind(this);
     };
 
-    componentDidMount() {
-        axios.get('/api/notes')
-        .then( res => {
-          this.setState({notes: res.data })
-          .catch(err => console.log(err));
-        });
-      };
-
-      handleChange(e) {
-        this.setState({ text: e.target.value });
-      };
+    // componentDidMount() {
+    //     axios.get('/api/notes')
+    //     .then( res => {
+    //       this.setState({notes: res.data })
+    //       .catch(err => console.log(err));
+    //     });
+    //   };
 
       newNote() {
         const {notes} = this.state;
@@ -48,13 +42,14 @@ export default class NoteContainer extends Component {
 
 
     render(){
+        const {notes} = this.state;
         return (
             <section>
                 <Nav newNote={this.newNote}/>
                 {
-              this.state.notes.map( note => (
-                <Note id={note.id} key={note.id } text={note.text } edit={this.editMessage } deleteNote={this.deleteNote} />
-              ))
+            //   this.state.notes.map( note => (
+                <Note id={notes.id} key={notes.id } text={notes.text } edit={this.editMessage } deleteNote={this.deleteNote} />
+            //   ))
             }
             </section>
         )
