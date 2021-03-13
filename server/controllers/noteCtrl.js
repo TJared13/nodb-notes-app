@@ -9,7 +9,7 @@ module.exports = {
 
     create: (req, res) => {
         let {title, body} = req.body
-
+        console.log(req.body)
         notes.push({
             id,
             title,
@@ -20,7 +20,7 @@ module.exports = {
     },
 
     delete: (req, res) => {
-        let noteIndex = null
+        let noteIndex = null;
         notes.forEach((elem, i) => {
             if (elem.id === +req.params.id){
                 noteIndex = i

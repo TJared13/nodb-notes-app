@@ -15,18 +15,33 @@ export default class Sidebar extends Component {
       };
 
     render(){
-        const {title, body} = this.state;
-        const {newNote} = this.props;
+        const {note, newNote, deleteNote} = this.props;
         return (
             <section className='sidebar'>
+            <div>
                 <h1 className='side-title'>myNotes</h1>
                 <div className='searchfield' >
                     <input type='text' placeholder='Search your notes'className='search-box'/>
                     <button className ='navbtn'>Search</button>
                     <button className ='navbtn'>Clear</button>
-                </div>
                 <button className='newbtn' onClick={newNote}>+</button>
+                </div>
+            </div>
+
+            <div>
+                {
+                    note.map( (e) => {
+                    return (
+                    <div className='sidebar-notes'>
+                        <button onClick={deleteNote}>Delete</button>
+                        <h2>{e.title}</h2> 
+                        <h3>{e.body}</h3>
+                    </div>
+                    )})
+                }
+            </div>
             </section>
+            
         )
     }
 }

@@ -28,18 +28,21 @@ export default class NoteContainer extends Component {
 
     newNote() {
     // const note = this.state;
-    const newNotePost = {text: 'Untitled', body: 'None'}
-        axios.post( ('/api/notes'), {newNotePost})
+    const newNotePost = {title: 'Untitled', body: 'No text has been entered'}
+        axios.post( ('/api/notes'), newNotePost)
         .then( res => {
-        this.setState({note: res.data});
+            this.setState({note: res.data})
+            console.log(res.data)
         })
         .catch(err => console.log(err));
     };
 
+
     deleteNote(id) {
-    axios.delete(`/api/notes/:${id}`)
+    axios.delete(`/api/notes/${id}`)
     .then( res => {
-        this.setState({notes: res.data });
+        this.setState({note: res.data });
+        console.log(res.data)
     })
     .catch(err => console.log(err));
     }
@@ -49,12 +52,8 @@ export default class NoteContainer extends Component {
     render(){
         return (
             <section className='mainContain'>
-                <Sidebar notes={this.state.notes} newNote={this.newNote}/>
-                {
-            //   this.state.notes.map( note => (
+                <Sidebar note={this.state.note} newNote={this.newNote} deleteNote={this.deleteNote}/>
                 <NoteBody />
-            //   ))
-            }
             </section>
         )
     }
