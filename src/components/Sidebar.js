@@ -7,12 +7,9 @@ export default class Sidebar extends Component {
             title: '',
             body: '',
         }
-        this.handleChange = this.handleChange.bind(this)
     }
+
     
-    handleChange(e) {
-        this.setState({ text: e.target.value });
-      };
 
     render(){
         const {note, newNote, deleteNote} = this.props;
@@ -33,7 +30,7 @@ export default class Sidebar extends Component {
                     note.map( (e) => {
                     return (
                     <div className='sidebar-notes'>
-                        <button onClick={deleteNote}>Delete</button>
+                        <button onClick={deleteNote} className="deleteBtn">X</button>
                         <h2>{e.title}</h2> 
                         <h3>{e.body}</h3>
                     </div>

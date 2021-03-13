@@ -19,6 +19,25 @@ module.exports = {
         res.status(200).send(notes)
     },
 
+    update: (req, res) => {
+        const {id} = req.params
+        let {title, body} = req.body
+        let noteIndex = null
+
+        notes.forEach((elem, i) => {
+            if (elem.id === id){
+                noteIndex = i
+            }
+        })
+        const updatedNote = {
+            id: +id,
+            title,
+            body,
+        }
+        notes.splice(noteIndex, 1, updatedNote)
+        res.status(200).send(notes)
+    },
+
     delete: (req, res) => {
         let noteIndex = null;
         notes.forEach((elem, i) => {

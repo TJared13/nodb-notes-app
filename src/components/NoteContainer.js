@@ -38,6 +38,7 @@ export default class NoteContainer extends Component {
     };
 
 
+
     deleteNote(id) {
     axios.delete(`/api/notes/${id}`)
     .then( res => {

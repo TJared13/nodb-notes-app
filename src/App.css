@@ -106,6 +106,19 @@ h3 {
   text-align: left;
 }
 
+.deleteBtn {
+  width: 15px;
+  height: 15px;
+  font-size: 10px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: white;
+  background-color: red;
+  border: none;
+}
+
+
 .mainBody {
   display: flex;
   flex-direction: column;
