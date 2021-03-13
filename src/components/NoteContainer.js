@@ -1,54 +1,58 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Nav from './Nav';
-import Note from './Note';
+import Sidebar from './Sidebar';
+import NoteBody from './NoteBody';
 
 export default class NoteContainer extends Component {
     constructor(){
         super();
         this.state = {
-            notes: [],
+            note: [],
         };
 
         this.newNote = this.newNote.bind(this);
         this.deleteNote = this.deleteNote.bind(this);
     };
 
-    // componentDidMount() {
-    //     axios.get('/api/notes')
-    //     .then( res => {
-    //       this.setState({notes: res.data })
-    //       .catch(err => console.log(err));
-    //     });
-    //   };
-
-      newNote() {
-        const {notes} = this.state;
-          axios.post( ('/api/notes'), {notes} )
-          .then( res => {
-            this.setState({notes: [...notes, <Note/>]});
-          })
-          .catch(err => console.log(err));
+    componentDidMount() {
+        axios.get('/api/notes')
+        .then( res => {
+          this.setState({notes: res.data })
+        })
+        .catch(err => console.log(err))
       };
 
-      deleteNote(id) {
-        axios.delete(`/api/notes/:${id}`)
+    handleChange( event ) {
+        this.setState({ text: event.target.value });
+      };
+
+    newNote() {
+    // const note = this.state;
+    const newNotePost = {text: 'Untitled', body: 'None'}
+        axios.post( ('/api/notes'), {newNotePost})
         .then( res => {
-          this.setState({notes: res.data });
+        this.setState({note: res.data});
         })
         .catch(err => console.log(err));
-      }
+    };
+
+    deleteNote(id) {
+    axios.delete(`/api/notes/:${id}`)
+    .then( res => {
+        this.setState({notes: res.data });
+    })
+    .catch(err => console.log(err));
+    }
     
 
 
     render(){
-        const {notes} = this.state;
         return (
-            <section>
-                <Nav newNote={this.newNote}/>
+            <section className='mainContain'>
+                <Sidebar notes={this.state.notes} newNote={this.newNote}/>
                 {
             //   this.state.notes.map( note => (
-                <Note id={notes.id} key={notes.id } text={notes.text } edit={this.editMessage } deleteNote={this.deleteNote} />
+                <NoteBody />
             //   ))
             }
             </section>

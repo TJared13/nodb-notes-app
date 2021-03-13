@@ -1,31 +1,32 @@
-// const notes = [];
-// id = 0;
+const notes = [];
+id = 0;
 
-// module.exports = {
+module.exports = {
 
-//     retrieve: (res) => {
-//         res.status(200).send(notes)
-//     },
+    retrieve: (req, res) => {
+        res.status(200).send(notes)
+    },
 
-//     create: (req, res) => {
-//         const {note} = req.body
+    create: (req, res) => {
+        let {title, body} = req.body
 
-//         notes.push({
-//             id,
-//             note,
-//         });
-//         id++;
-//         res.status(200).send(notes)
-//     },
+        notes.push({
+            id,
+            title,
+            body,
+        });
+        id++;
+        res.status(200).send(notes)
+    },
 
-//     delete: (req, res) => {
-//         let noteIndex = null
-//         notes.forEach((elem, i) => {
-//             if (elem.id === +req.params.id){
-//                 noteIndex = i
-//             }
-//         })
-//         notes.splice(noteIndex, 1)
-//         res.status(200).send(notes)
-//     },
-// }
+    delete: (req, res) => {
+        let noteIndex = null
+        notes.forEach((elem, i) => {
+            if (elem.id === +req.params.id){
+                noteIndex = i
+            }
+        })
+        notes.splice(noteIndex, 1)
+        res.status(200).send(notes)
+    },
+}

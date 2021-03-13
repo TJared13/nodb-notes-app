@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 
-export default class Nav extends Component {
+export default class Sidebar extends Component {
     constructor(){
         super();
         this.state = {
-            text: '',
+            title: '',
+            body: '',
         }
         this.handleChange = this.handleChange.bind(this)
     }
@@ -14,13 +15,13 @@ export default class Nav extends Component {
       };
 
     render(){
-        const {text} = this.state;
+        const {title, body} = this.state;
         const {newNote} = this.props;
-        console.log(text)
         return (
-            <section className='navbar'>
+            <section className='sidebar'>
+                <h1 className='side-title'>myNotes</h1>
                 <div className='searchfield' >
-                    <input type='text' onChange={this.handleChange}/>
+                    <input type='text' placeholder='Search your notes'className='search-box'/>
                     <button className ='navbtn'>Search</button>
                     <button className ='navbtn'>Clear</button>
                 </div>
