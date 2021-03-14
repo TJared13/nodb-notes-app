@@ -3,7 +3,7 @@ import React from 'react';
 const Header = () => {
     return (
         <section className='headline'>
-            <span className='title'>myNotes</span>
+            <span data-text='myNotes...' className='title'>myNotes...</span>
         </section>
     )
 }

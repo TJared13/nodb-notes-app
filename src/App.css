@@ -8,6 +8,7 @@ body {
   background: radial-gradient(circle, rgb(243, 247, 247) 50%, rgb(175, 181, 182) 100%);
 }
 
+
 .headline {
   height: 10vh;
   position: relative;
@@ -16,6 +17,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 
 .title {
   font-family: 'Russo One', sans-serif;
@@ -29,11 +31,14 @@ body {
   font-size: 45px;
   color: rgb(0, 136, 255);
   text-align: center;
+  text-shadow: 2px 5px 4px #c4b59d, 2px -2px 1px rgb(255, 255, 255);
 }
 
 .mainContain {
   display: flex;
   justify-content: flex-start;
+  animation: transitionIn 1s ease-in;
+
 }
 
 .sidebar {
@@ -41,6 +46,7 @@ body {
   height: 90vh;
   position: relative;
   border-right: 2px solid rgba(88, 88, 88, 0.685) ;
+  overflow: scroll;
 }
 
 .mainBody {
@@ -69,11 +75,20 @@ body {
   height: 30px;
 }
 
+.navbtn:hover{
+  animation: pulse 0.5s ease-in-out;
+}
+
+
 .newbtn {
   width: 30px;
   height: 30px;
   position: absolute;
   right: 20px;
+}
+
+.newbtn:hover {
+  animation: jello-horizontal .9s ease-out;
 }
 
 .sidebar-notes {
@@ -83,12 +98,17 @@ body {
   padding: 15px;
   position: relative;
   left: 35px;
-  background-color: rgb(231, 231, 231);
+  background-color: rgb(247, 247, 247);
   border: 2px solid lightgray;
-  box-shadow: lightslategray 2px 2px 4px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  animation: swing-in-top-fwd .5s;
+}
+
+.sidebar-notes:hover {
+  background-color: rgb(208, 237, 252);
+  box-shadow: rgb(129, 140, 150) 2px 2px 4px;
 }
 
 h2 {
@@ -114,10 +134,14 @@ h3 {
   right: 5px;
   top: 5px;
   color: white;
-  background-color: red;
+  background-color: rgba(247, 100, 100, 0.658);
   border: none;
 }
 
+.deleteBtn:hover {
+  animation: pulse 0.5s ease-in-out;
+  background-color: red;
+}
 
 .mainBody {
   display: flex;
@@ -142,3 +166,65 @@ h3 {
   padding: 15px;
 }
 
+@keyframes transitionIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes swing-in-top-fwd {
+  0% {
+    transform: rotateX(-100deg);
+    transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg);
+    transform-origin: top;
+    opacity: 1;
+  }
+}
+
+@keyframes flip-in-hor-bottom {
+  0% {
+    transform: rotateX(80deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0);
+    opacity: 1;
+  }
+}
+@keyframes jello-horizontal {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+
+@keyframes pulse { 
+  0% { transform: scale(1); } 
+  50% { transform: scale(1.1); } 
+  100% { transform: scale(1); } 
+} 
