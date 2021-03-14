@@ -25,17 +25,25 @@ module.exports = {
         let noteIndex = null
 
         notes.forEach((elem, i) => {
-            if (elem.id === id){
+            if (elem.id === +id){
                 noteIndex = i
             }
         })
         const updatedNote = {
             id: +id,
-            title,
-            body,
+            title: title,
+            body: body,
         }
         notes.splice(noteIndex, 1, updatedNote)
         res.status(200).send(notes)
+    },
+
+    view: (req, res) => {
+        const {id} = req.params
+        const [viewNote] = notes.filter(e => {
+            return (e.id === +id)
+        })
+        res.status(200).send(viewNote)
     },
 
     delete: (req, res) => {
