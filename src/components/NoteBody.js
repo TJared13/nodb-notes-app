@@ -42,8 +42,8 @@ export default class NoteBody extends Component {
                 <textarea value={this.state.bodyInput} placeholder='Type your note here...' className='body-input' onChange={(e) => this.setState({bodyInput: e.target.value})} />
                 </div>
                 :
-                <div>
-                    <h2>{title}</h2>
+                <div className='static'>
+                    <span>{title}</span>
                     <p>{body}</p>
                 </div>    
                 }

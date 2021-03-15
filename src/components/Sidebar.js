@@ -12,7 +12,7 @@ export default class Sidebar extends Component {
     
 
     render(){
-        const {note, newNote, view, editNote, deleteNote, onInputChange} = this.props;
+        const {note, newNote, viewNote, deleteNote, onInputChange} = this.props;
         return (
             <section className='sidebar'>
             <div>
@@ -29,7 +29,7 @@ export default class Sidebar extends Component {
                 {
                     note.map( (e) => {
                     return (
-                    <div className='sidebar-notes' onClick={() => view(e.id)}>
+                    <div className='sidebar-notes' onClick={() => viewNote(e.id)}>
                         <button onClick={deleteNote} className="deleteBtn">X</button>
                         <h2>{e.title}</h2> 
                         <h3>{e.body}</h3>

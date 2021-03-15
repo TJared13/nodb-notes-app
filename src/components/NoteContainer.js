@@ -15,7 +15,6 @@ export default class NoteContainer extends Component {
         };
 
         this.newNote = this.newNote.bind(this);
-        this.editNote = this.editNote.bind(this);
         this.deleteNote = this.deleteNote.bind(this);
         this.onInputChange = this.onInputChange.bind(this);
     };
@@ -44,7 +43,7 @@ export default class NoteContainer extends Component {
         .catch(err => console.log(err));
     };
 
-    view = (id) => {
+    viewNote = (id) => {
         axios.get(`/api/note/${id}`)
         .then( res => {
             console.log(res.data)
@@ -75,8 +74,6 @@ export default class NoteContainer extends Component {
     .catch(err => console.log(err));
     }
     
-
-
     render(){
         return (
             <section className='mainContain'>
@@ -85,7 +82,7 @@ export default class NoteContainer extends Component {
                     title={this.state.title} 
                     body={this.state.body} 
                     newNote={this.newNote} 
-                    view={this.view} 
+                    viewNote={this.viewNote} 
                     editNote={this.editNote} 
                     deleteNote={this.deleteNote} 
                     onInputChange={this.onInputChange}/>
