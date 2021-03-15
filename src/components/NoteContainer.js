@@ -53,7 +53,11 @@ export default class NoteContainer extends Component {
         .catch(err => console.log(err))
     };
 
-
+    searchNote = (title) => {
+        axios.put(`/api/notes/${title}`)
+        .then(res => this.setState({note: res.data}))
+        .catch(err => console.log(err))
+    };
 
     editNote = (id, title, body) => {
         axios.put(`/api/notes/${id}`, {title, body})
@@ -84,7 +88,8 @@ export default class NoteContainer extends Component {
                     newNote={this.newNote} 
                     viewNote={this.viewNote} 
                     editNote={this.editNote} 
-                    deleteNote={this.deleteNote} 
+                    deleteNote={this.deleteNote}
+                    searchNote={this.searchNote} 
                     onInputChange={this.onInputChange}/>
                 <NoteBody 
                     id={this.state.id} 

@@ -50,10 +50,19 @@ module.exports = {
         let noteIndex = null;
         notes.forEach((elem, i) => {
             if (elem.id === +req.params.id){
-                noteIndex = i
+                noteIndex = notes[i]
             }
         })
         notes.splice(noteIndex, 1)
         res.status(200).send(notes)
     },
+
+    search: (req, res) => {
+        const {title, userInput} = req.params
+        const [searchNote] = notes.filter(e => {
+            return (e.userInput === title)
+        })
+        res.status(200).send(searchNote)
+    },
+
 }

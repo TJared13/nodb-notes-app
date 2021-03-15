@@ -9,7 +9,7 @@
 }
 
 body {
-  background: radial-gradient(circle, rgb(243, 247, 247) 50%, rgb(175, 181, 182) 100%);
+  background: radial-gradient(circle, rgb(244, 250, 250) 50%, rgb(197, 200, 201) 100%);
 }
 
 
@@ -34,9 +34,9 @@ body {
   margin: 10px;
   font-family: 'Russo One', sans-serif;
   font-size: 45px;
-  color: rgb(0, 136, 255);
+  color: rgb(33, 142, 243);
   text-align: center;
-  text-shadow: 2px 5px 4px #c4b59d, 2px -2px 1px rgb(255, 255, 255);
+  text-shadow: 2px 5px 4px #c4b59d, 2px -2px 1px rgb(233, 233, 233);
 }
 
 .mainContain {
