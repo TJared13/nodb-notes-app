@@ -1,7 +1,6 @@
-import axios from 'axios';
 import React, {Component} from 'react';
 
-export default class NoteBody extends Component {
+export default class NoteEdit extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -24,8 +23,12 @@ export default class NoteBody extends Component {
         this.setState({edit: false, titleInput: '', bodyInput:''})
     };
 
+    selectAllText = (e) => {
+        e.target.select();
+      };
+
     render(){
-        const {id, title, body, editNote} = this.props
+        const {title, body} = this.props
         console.log(title, body)
         return (
             <section className='mainBody'>
@@ -37,7 +40,7 @@ export default class NoteBody extends Component {
                 this.state.edit
                 ?
                 <div>
-                <input value={this.state.titleInput} placeholder='Name your Title here...' className='title-input' onChange={(e) => this.setState({titleInput: e.target.value})}/>
+                <input value={this.state.titleInput} placeholder='Name your Title here...' className='title-input' onClick={this.selectAllText} onChange={(e) => this.setState({titleInput: e.target.value})}/>
 
                 <textarea value={this.state.bodyInput} placeholder='Type your note here...' className='body-input' onChange={(e) => this.setState({bodyInput: e.target.value})} />
                 </div>

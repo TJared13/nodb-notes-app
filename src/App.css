@@ -138,7 +138,10 @@ body {
   border: 2px solid lightgray;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-content: flex-start baseline center;
+  flex-flow: wrap;
+  overflow-y: scroll;
   animation: swing-in-top-fwd .5s;
 }
 
@@ -152,15 +155,17 @@ body {
 }
 
 h2 {
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bolder;
   text-decoration: underline;
   text-align: center;
+  z-index:1;
 }
 
 h3 {
+  margin-top: 5px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   text-align: left;
@@ -220,6 +225,8 @@ h3 {
 }
 
 .static {
+  width: 65vw;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -236,9 +243,12 @@ h3 {
 }
 
 .static p {
+  position: absolute;
+  top: 200px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 40px;
-  
+  font-size: 25px;
+  text-align: left;
+  overflow-y: scroll;
 }
 
 

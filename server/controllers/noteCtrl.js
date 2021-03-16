@@ -50,7 +50,7 @@ module.exports = {
         let noteIndex = null;
         notes.forEach((elem, i) => {
             if (elem.id === +req.params.id){
-                noteIndex = notes[i]
+                noteIndex = i
             }
         })
         notes.splice(noteIndex, 1)

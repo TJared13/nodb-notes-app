@@ -35,7 +35,7 @@ export default class Sidebar extends Component {
                     note.map( (e) => {
                     return (
                     <div key={e.id} className='sidebar-notes' onClick={() => viewNote(e.id)}>
-                        <button onClick={deleteNote} className="deleteBtn">X</button>
+                        <button onClick={() => deleteNote(e.id)} className="deleteBtn">X</button>
                         <h2>{e.title}</h2> 
                         <h3>{e.body}</h3>
                     </div>

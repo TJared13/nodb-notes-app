@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Sidebar from './Sidebar';
-import NoteBody from './NoteBody';
+import NoteEdit from './NoteEdit';
 
 export default class NoteContainer extends Component {
     constructor(){
@@ -70,6 +70,7 @@ export default class NoteContainer extends Component {
 
 
     deleteNote(id) {
+        console.log(id)
     axios.delete(`/api/notes/${id}`)
     .then( res => {
         this.setState({note: res.data });
@@ -91,7 +92,7 @@ export default class NoteContainer extends Component {
                     deleteNote={this.deleteNote}
                     searchNote={this.searchNote} 
                     onInputChange={this.onInputChange}/>
-                <NoteBody 
+                <NoteEdit 
                     id={this.state.id} 
                     title={this.state.title} 
                     body={this.state.body}
